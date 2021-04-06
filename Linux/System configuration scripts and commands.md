@@ -24,7 +24,7 @@
 
 - Why wouldn't you use the options `-x` and `-c` at the same with `tar`?
 
-We use -x for extracting the files and -c to create file , if we use both -x and -c in a command, then -x will export the file created by -c.
+  We use -x for extracting the files and -c to create file , if we use both -x and -c in a command, then -x will export the file created by -c.
 
 ---
 
