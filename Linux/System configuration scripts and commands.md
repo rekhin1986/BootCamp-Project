@@ -17,6 +17,7 @@
 
 **Bonus** 
 - Command to create an incremental archive called `logs_backup_tar.gz` with only changed files to `snapshot.file` for the `/var/log` directory:
+
   sudo tar --listed-incremental=snapshot.file -cvzf logs_backup_tar.gz /var/log
 
 #### Critical Analysis Question
