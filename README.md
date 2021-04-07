@@ -99,25 +99,40 @@ In order to use the playbook, you will need to have an Ansible control node alre
 SSH into the control node and follow the steps below:
 
 •	Copy the filebeat.yml and metricbeat.yml file to the /etc/ansible/roles/files/ directory.
+
 •	Update the configuration files to include the Private IP of the Elk-Server to the ElasticSearch and Kibana sections of the configuration file.
+
 •	Create a new ansible-playbook filebeat-playbook.yml in the /etc/ansible/roles/ directory that will install, drop in the filebeat.yml and metricbeat.yml files from the /etc/ansible/roles/files/ directory, uodate the configuration files, and start the service for both Filebeat and Metricbeat.
+
 •	Run the playbook, and navigate to ELk-Server to check that the installation worked as expected. [docker ps]
-•	Which file is the playbook? Where do you copy it? The playbook is called filebeat-playbook.yml. You copy the file to the "/etc/ansible/hosts/" directory.
+
+•	Which file is the playbook? Where do you copy it? The playbook is called filebeat-playbook.yml. You copy the file to the "/etc/ansible/" directory.
 •	
-•	Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on? The file you need to update is the filebeat.yml file which is a configuration file that will be dropped into the Elk-Server during the run of the ansible-playbook. When you update the host.cfg file in the ansible directory you will need to create a new group called [elkservers] and add the Private IP of the Elk-Server to the group. Then when configuring the filebeat.yml file you need to designate the Private IP of the Elk-Server in two lines of the .yml file. Lines 1106 and 1806 are the needed to be updated with the Private IP.
+•	Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat
+on? The file you need to update is the filebeat.yml file which is a configuration file that will be dropped into the Elk-Server during the run of the ansible-playbook. When you update the host.cfg file in the ansible directory you will need to create a new group called [elkservers] and add the Private IP of the Elk-Server to the group. Then when configuring the filebeat.yml file you need to designate the Private IP of the Elk-Server in two lines of the .yml file. Lines 1106 and 1806 are the needed to be updated with the Private IP.
+
 •	Which URL do you navigate to in order to check that the ELK server is running? The URL to use to verify the Elk-Server is running is the Public IP (0.0.0.0:5601)
 
 
 The commands needed to run the Ansible configuration for the Elk-Server are:
-•	ssh RedAdmin@JumpBox(PrivateIP)
+•	ssh RedAdmin@RedTeamVm(PrivateIP)
+
 •	sudo docker container list -a (locate your ansible container)
+
 •	sudo docker start container (name of the container)
+
 •	sudo docker attach container (name of the container)
+
 •	cd /etc/ansible/
+
 •	ansible-playbook elk.yml (configures Elk-Server and starts the Elk container on the Elk-Server) wait a couple minutes for the implementation of the Elk-Server
 •	cd /etc/ansible/roles/
+
 •	ansible-playbook filebeat-playbook.yml (installs Filebeat )
+
 •	ansible-playbook metricbeat-playbook.yml (installs metricbeat).
+
 •	open a new web browser (Elk-Server PublicIP:5601) This will bring up the Kibana Web Portal
+
 You will need to ensure all files are properly placed before running the ansible-playbooks.
 
