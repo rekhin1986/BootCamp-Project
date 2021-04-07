@@ -87,7 +87,9 @@ We have installed the following Beats on these machines:
 -Metricbeat
 
 These Beats allow us to collect the following information from each machine:
+
 Filebeat is a lightweight shipper for forwarding and centralizing log data. Filebeat monitors log files or locations you specify, collects log events, and forwards them either to Elasticsearch or Logstash for indexing.
+
 Metricbeat collects metrics from the operating system and from services running on the server. Metricbeat then takes the metrics and statistics that it collects and ships them to the output that you specify.
 
 
@@ -104,6 +106,8 @@ SSH into the control node and follow the steps below:
 •	
 •	Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on? The file you need to update is the filebeat.yml file which is a configuration file that will be dropped into the Elk-Server during the run of the ansible-playbook. When you update the host.cfg file in the ansible directory you will need to create a new group called [elkservers] and add the Private IP of the Elk-Server to the group. Then when configuring the filebeat.yml file you need to designate the Private IP of the Elk-Server in two lines of the .yml file. Lines 1106 and 1806 are the needed to be updated with the Private IP.
 •	Which URL do you navigate to in order to check that the ELK server is running? The URL to use to verify the Elk-Server is running is the Public IP (0.0.0.0:5601)
+
+
 The commands needed to run the Ansible configuration for the Elk-Server are:
 •	ssh RedAdmin@JumpBox(PrivateIP)
 •	sudo docker container list -a (locate your ansible container)
